@@ -6,7 +6,7 @@ The idea is that on startup you can run a script to fully automatically get back
 Current status: deployer.js has to be run multiple times for it to actually hack and run the scripts because of issues with waiting for the scripts that are called to finish. This causes the check for root access to occur before gainaccess.js has been finished, resulting in hackn00dles.js not being run on a server we do have root access for after gainaccess.js has run. There is no automation for purchasing servers or getting the hacknet up and running. I have not progressed into the game far enough to automate factions yet.
 
 Todo:
-1 Find a way for a script to notify it is done, so deployer.js can wait for it. Ports or an output file are decent options. Sleep probably is either too long, or too short when later .exe are unlocked.
+1 Find a way for a script to notify it is done, so deployer.js can wait for it. Ports or an output file are decent options. Currently using sleep(200) instead of a notifying system.
 2 Create script to make a txt file (JSON structured?) with information on all servers.
 3 Have deployer.js work recursively to cover not just servers directly connected to home (Possibly using the txt file with information on all servers as per 2).
 4 Write a program to purchase all player owned servers and start the hacking script on them.
