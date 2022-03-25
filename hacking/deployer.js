@@ -1,7 +1,10 @@
 /** @param {NS} ns **/
 export async function main(ns) {
-	const servers = ns.scan('home');
-	ns.tprint("Deploying on following servers: " + servers);
+	const servermodel = JSON.parse(ns.read("servermodel.txt"));
+	const servers = [];
+	for (let server of servermodel) {
+		servers.push(server.location);
+	}
 	for (let serverName of servers) {
 		ns.run("/scripts/gainaccess.js", 1, serverName);
 		// Wait for the script to be done
