@@ -21,14 +21,14 @@ export async function main(ns) {
 	let nextServerCost = ns.getPurchasedServerCost(serverRam);
 	// Try to buy all servers directly.
 	while (money > nextServerCost) {
-		ns.buyServer(serverRam);
+		buyServer(serverRam);
 		await ns.sleep(1000);
 	}
 	// Wait until money is available to buy more servers. Checks every 10 minutes if enough money is available.
 	while (ns.getPurchasedServers.length < 25) {
 		ns.tprint(ns.getPurchasedServers.length);
 		if (money > nextServerCost) {
-			ns.buyServer(serverRam);
+			buyServer(serverRam);
 		}
 		await ns.sleep(600000);
 	}
