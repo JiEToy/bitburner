@@ -7,9 +7,11 @@ Current status: deployer.js has to be run multiple times for it to actually hack
 
 Todo:
 1 Find a way for a script to notify it is done, so deployer.js can wait for it. Ports or an output file are decent options. Currently using sleep(200) instead of a notifying system.
-2 Create script to make a txt file (JSON structured?) with information on all servers.
-3 Have deployer.js work recursively to cover not just servers directly connected to home (Possibly using the txt file with information on all servers as per 2).
 4 Write a program to purchase all player owned servers and start the hacking script on them.
 5 Start a program that buys hacknet nodes/levels when profitable.
-6 Find out how the code for factions work.
-7 Play the game!
+6 Write a script for factions.
+7 Add more server details to the servermodel, like hasrootaccess, maxram etc.
+8 Run createservermodel.js from the deployer to avoid filenotexist error.
+9 Make a purchase script that decides where to put more money. Home server upgrade/buy from darkweb/new player-owned servers/hacknet stuff.
+10 Make a script to solve coding contracts (cct files).
+* Play the game!
