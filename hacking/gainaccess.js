@@ -1,31 +1,26 @@
 /** @param {NS} ns **/
 export async function main(ns) {
 	let serverName = ns.args[0];
+	let server = ns.getServer(serverName);
 	// Try to open ports and get root access
-	let openPorts = 0;
-	if (ns.fileExists("BruteSSH.exe")) {
+	if (ns.fileExists("BruteSSH.exe") && !server.sshPortOpen) {
 		ns.brutessh(serverName);
-		openPorts++;
 	}
-	if (ns.fileExists("FTPCrack.exe")) {
+	if (ns.fileExists("FTPCrack.exe") && !server.ftpPortOpen) {
 		ns.ftpcrack(serverName);
-		openPorts++;
 	}
-	if (ns.fileExists("RelaySMTP.exe")) {
+	if (ns.fileExists("RelaySMTP.exe") && !server.smtpPortOpen) {
 		ns.relaysmtp(serverName);
-		openPorts++;
 	}
-	if (ns.fileExists("HTTPWorm.exe")) {
+	if (ns.fileExists("HTTPWorm.exe") && !server.httpPortOpen) {
 		ns.httpworm(serverName);
-		openPorts++;
 	}
-	if (ns.fileExists("SQLInject.exe")) {
+	if (ns.fileExists("SQLInject.exe") && !server.sqlPortOpen) {
 		ns.sqlinject(serverName);
-		openPorts++;
 	}
 	// If enough ports are opened, get root access
-	if (ns.getServerNumPortsRequired(serverName) <= openPorts) {
+	if (server.openPortCount >= server.numOpenPortsRequired && !server.hasAdminRights) {
 		ns.nuke(serverName);
 	}
-	ns.tprint("we have rootAccess for " + serverName + ": " + ns.hasRootAccess(serverName));
+	ns.tprint("we have " + (server.hasAdminRights ? "" : "no ") + "rootAccess for " + serverName);
 }
